@@ -5,6 +5,7 @@ const productSchema = new Schema<TProduct>(
   {
     category: {
       type: Schema.Types.ObjectId,
+      ref: 'Category',
       required: true,
     },
     name: {

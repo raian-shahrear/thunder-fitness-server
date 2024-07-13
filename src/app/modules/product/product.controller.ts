@@ -9,6 +9,7 @@ const createProduct = catchAsync(async (req, res) => {
   const result = await ProductServices.createProductIntoDB(category, product);
   // send response
   sendResponse(res, {
+    success: true,
     statusCode: httpStatus.OK,
     message: 'Product is created successfully!',
     data: result,
@@ -20,8 +21,11 @@ const getAllProducts = catchAsync(async (req, res) => {
   const result = await ProductServices.getAllProductsFromDB(req.query);
   // send response
   sendResponse(res, {
-    statusCode: httpStatus.OK,
-    message: 'Products are retrieved successfully!',
+    success: result.length ? true : false,
+    statusCode: result.length ? httpStatus.OK : httpStatus.NOT_FOUND,
+    message: result.length
+      ? 'Products are retrieved successfully!'
+      : 'No Data Found!',
     data: result,
   });
 });
@@ -32,6 +36,7 @@ const getSingleProduct = catchAsync(async (req, res) => {
   const result = await ProductServices.getSingleProductFromDB(id);
   // send response
   sendResponse(res, {
+    success: true,
     statusCode: httpStatus.OK,
     message: 'Product is retrieved successfully!',
     data: result,
@@ -47,8 +52,11 @@ const getProductsByCategory = catchAsync(async (req, res) => {
   );
   // send response
   sendResponse(res, {
-    statusCode: httpStatus.OK,
-    message: 'Products are retrieved by category successfully!',
+    success: result.length ? true : false,
+    statusCode: result.length ? httpStatus.OK : httpStatus.NOT_FOUND,
+    message: result.length
+      ? 'Products are retrieved by category successfully!'
+      : 'No Data Found!',
     data: result,
   });
 });
@@ -59,6 +67,7 @@ const deleteProduct = catchAsync(async (req, res) => {
   const result = await ProductServices.deleteProductFromDB(id);
   // send response
   sendResponse(res, {
+    success: true,
     statusCode: httpStatus.OK,
     message: 'Product is deleted successfully!',
     data: result,
@@ -71,6 +80,7 @@ const updateProduct = catchAsync(async (req, res) => {
   const result = await ProductServices.updateProductIntoDB(id, req.body);
   // send response
   sendResponse(res, {
+    success: true,
     statusCode: httpStatus.OK,
     message: 'Product is updated successfully!',
     data: result,

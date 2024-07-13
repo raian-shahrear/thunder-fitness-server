@@ -12,6 +12,7 @@ const createProductValidationSchema = z.object({
     }),
   }),
 });
+
 const updateProductValidationSchema = z.object({
   body: z.object({
     category: z.string().optional(),

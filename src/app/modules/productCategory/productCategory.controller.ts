@@ -3,6 +3,19 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { CategoryServices } from './productCategory.service';
 
+// create a category
+const createCategory = catchAsync(async (req, res) => {
+  const result = await CategoryServices.createCategoryFromDB(req.body);
+  // send response
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Category is created successfully!',
+    data: result,
+  });
+});
+
+// get all category
 const getAllCategories = catchAsync(async (req, res) => {
   const result = await CategoryServices.getAllCategoriesFromDB();
   // send response
@@ -18,4 +31,5 @@ const getAllCategories = catchAsync(async (req, res) => {
 
 export const CategoryControllers = {
   getAllCategories,
+  createCategory,
 };

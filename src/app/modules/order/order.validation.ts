@@ -3,6 +3,7 @@ import { z } from 'zod';
 const createOrderedProductSchema = z.object({
   product: z.string(),
   quantity: z.number(),
+  productCost: z.number(),
 });
 
 const createOrderValidationSchema = z.object({
@@ -12,7 +13,8 @@ const createOrderValidationSchema = z.object({
     customerPhone: z.string(),
     deliveryAddress: z.string(),
     orderedProducts: z.array(createOrderedProductSchema),
-    paid: z.boolean(),
+    totalCost: z.number(),
+    isPaid: z.boolean().optional(),
     paymentMethod: z.string(),
     status: z
       .enum(['Order placed', 'Order processing', 'Delivered'])

@@ -12,6 +12,10 @@ const orderedProductSchema = new Schema<TOrderedProduct>(
       type: Number,
       required: true,
     },
+    productCost: {
+      type: Number,
+      required: true,
+    },
   },
   { _id: false },
 );
@@ -38,9 +42,13 @@ const orderSchema = new Schema<TOrder>(
       type: [orderedProductSchema],
       required: true,
     },
-    paid: {
-      type: 'Boolean',
+    totalCost: {
+      type: Number,
       required: true,
+    },
+    isPaid: {
+      type: 'Boolean',
+      default: false,
     },
     paymentMethod: {
       type: String,

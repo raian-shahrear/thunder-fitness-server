@@ -3,6 +3,7 @@ import { Types } from 'mongoose';
 export type TOrderedProduct = {
   product: Types.ObjectId;
   quantity: number;
+  productCost: number;
 };
 
 export type TOrder = {
@@ -11,7 +12,8 @@ export type TOrder = {
   customerPhone: string;
   deliveryAddress: string;
   orderedProducts: TOrderedProduct[];
-  paid: boolean;
+  totalCost: number;
+  isPaid?: boolean;
   paymentMethod: string;
   status?: 'Order placed' | 'Order processing' | 'Delivered';
 };

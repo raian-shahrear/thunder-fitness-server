@@ -3,13 +3,11 @@ import { z } from 'zod';
 const createProductValidationSchema = z.object({
   body: z.object({
     category: z.string(),
-    product: z.object({
-      name: z.string(),
-      description: z.string(),
-      price: z.number(),
-      stock: z.number(),
-      image: z.string(),
-    }),
+    name: z.string(),
+    description: z.string(),
+    price: z.number(),
+    stock: z.number(),
+    image: z.string(),
   }),
 });
 
@@ -21,6 +19,7 @@ const updateProductValidationSchema = z.object({
     price: z.number().optional(),
     stock: z.number().optional(),
     image: z.string().optional(),
+    isFeaturedProduct: z.boolean().optional(),
   }),
 });
 

@@ -7,4 +7,5 @@ export type TProduct = {
   price: number;
   stock: number;
   image: string;
+  isFeaturedProduct: boolean;
 };

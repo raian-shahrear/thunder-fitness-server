@@ -5,8 +5,8 @@ import sendResponse from '../../utils/sendResponse';
 
 // create a product
 const createProduct = catchAsync(async (req, res) => {
-  const { category, product } = req.body;
-  const result = await ProductServices.createProductIntoDB(category, product);
+  const product = req.body;
+  const result = await ProductServices.createProductIntoDB(product);
   // send response
   sendResponse(res, {
     success: true,

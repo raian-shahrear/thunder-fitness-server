@@ -26,8 +26,7 @@ const getAllProductsFromDB = async (query: Record<string, unknown>) => {
   )
     .search(productSearchableFields)
     .filter()
-    .sort()
-    .paginate();
+    .sort();
 
   const result = await productQuery.queryModel;
   return result;
@@ -51,8 +50,8 @@ const getProductsByCategoryFromDB = async (
   )
     .search(productSearchableFields)
     .filter()
-    .sort()
-    .paginate();
+    .sort();
+
   const result = await productQuery.queryModel;
   return result;
 };

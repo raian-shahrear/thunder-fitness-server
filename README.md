@@ -1,5 +1,5 @@
 # Thunder Fitness Server
-
+###### Live Server: [thunder-fitness-server](https://thunder-fitness-server.vercel.app)
 
 ## Important API:
 1. Create a product: /api/v1/products (POST)
@@ -13,3 +13,25 @@
 -----------------------------------------------------
 8. Create an order: /api/v1/orders (POST)
 9. Get all orders: /api/v1/orders (GET)
+
+## Configuration
+1. Create a `.env` file in the root directory of the project.
+2. Add necessary configuration variables in the `.env` file.
+   Example:
+   ```bash
+    NODE_ENV=development
+    PORT=5000
+    DATABASE_URL=database_url
+   ```
+3. Then the `.env` file needs to be connected with the `config`.
+   ```js
+    import dotenv from 'dotenv';
+    import path from 'path';
+
+    dotenv.config({ path: path.join(process.cwd(), '.env') });
+    export default {
+        NODE_ENV: process.env.NODE_ENV,
+        port: process.env.PORT,
+        db_url: process.env.DATABASE_URL,
+    };
+   ```
